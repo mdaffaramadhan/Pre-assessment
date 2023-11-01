@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class preassesment2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+    
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        String[] angka_ke_kata = {
+            "nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"
+        };
+
+        String angka_A = convertAngkaToKata(A);
+        String angka_B = convertAngkaToKata(B);
+
+        System.out.println(angka_A + " " + angka_B);
+
+        scanner.close();
+    }
+    public static String convertAngkaToKata(int angka) {
+        if (angka < 10) {
+            return angka_ke_kata[angka];
+        } else if (angka < 20) {
+            return "sebelas";
+        } else if (angka < 100) {
+            int puluhan = angka / 10;
+            int satuan = angka % 10;
+            return angka_ke_kata[puluhan] + " puluh " + angka_ke_kata[satuan];
+        } else {
+            int ratusan = angka / 100;
+            int sisa = angka % 100;
+            return angka_ke_kata[ratusan] + " ratus " + convertAngkaToKata(sisa);
+        }
+    }
+}
