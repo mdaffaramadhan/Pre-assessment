@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class preassesment3 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        String kelamin = input.nextLine().toLowerCase();
+        double berat = input.nextDouble();
+        double tinggi = input.nextDouble();
+
+        
+        if(kelamin.equals("pria") || kelamin.equals("wanita")){
+            double tinggiM = tinggi / 100;
+            double bmi = berat / (tinggiM * tinggiM);
+
+            System.out.printf("%.2f, %s\n", bmi, kategoriBMI(kelamin, bmi));
+
+        }else {
+            System.out.println("Jenis kelamin tidak valid");
+        }
+    }
+
+    private static String kategoriBMI(String kelamin, double bmi) {
+        if (kelamin.equals("pria")) {
+            if (bmi < 20.50) {
+                return "Kurus";
+            } else if (bmi >= 20.50 && bmi < 26.99) {
+                return "Ideal";
+            } else {
+                return "Gemuk";
+            }
+        } else if (kelamin.equals("wanita")) {
+            if (bmi < 18.50) {
+                return "Kurus";
+            } else if (bmi >= 18.50 && bmi < 24.99) {
+                return "Ideal";
+            } else {
+                return "Gemuk";
+            }
+        } else {
+            return "Jenis kelamin tidak valid";
+        }
+    }
+}
