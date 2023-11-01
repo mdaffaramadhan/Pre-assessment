@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Preassesment1 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        
+        int angka1 = in.nextInt();
+        int angka2 = in.nextInt();
+        int angka3 = in.nextInt();
+    
+        int enkripsi1 = enkripsi(angka1);
+        int enkripsi2 = enkripsi(angka2);
+        int enkripsi3 = enkripsi(angka3);
+    
+        System.out.println(enkripsi1);
+        System.out.println(enkripsi2);
+        System.out.println(enkripsi3);
+        
+    }
+
+    public static int enkripsi(int angka) {
+
+        int ribuan = angka / 1000;
+        int sisa = angka % 1000;
+        int ratusan = sisa / 100;
+        sisa = sisa % 100;
+        int puluhan = sisa / 10;
+        int satuan = sisa % 10;
+
+        ribuan = (ribuan + 5) %10;
+        ratusan = (ratusan + 5) %10;
+        puluhan = (puluhan + 5) %10;
+        satuan = (satuan + 5) %10;
+
+        int angkaEnkripsi = ribuan * 1000 + satuan * 100  + puluhan * 10  + ratusan;
+        return angkaEnkripsi;
+        
+    }
+
+}
